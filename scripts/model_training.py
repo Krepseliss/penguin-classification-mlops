@@ -38,7 +38,7 @@ print("✅ Model Evaluation:")
 print(classification_report(y_test, y_pred))
 print("Accuracy:", accuracy_score(y_test, y_pred))
 
-# Save the trained model
+#Save the trained model
 model_path = Path(r"C:\Users\alex\Data Engineering\penguin-classification-mlops\models\rf_classifier.pkl").resolve()
 joblib.dump(model, model_path)
 

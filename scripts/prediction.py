@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 #load the dumped model
-model_path = Path(r"C:\Users\alex\Data Engineering\penguin-classification-mlops\models\rf_classifier.pkl").resolve()
+model_path = Path("models/rf_classifier.pkl").resolve()
 model = joblib.load(model_path)
 
 #fetch penguin data from API
@@ -34,7 +34,7 @@ prediction_text = f"""
 """
 
 #save the prediction
-output=Path(r"C:\Users\alex\Data Engineering\penguin-classification-mlops\predictions\latest_pred.md").resolve()
+output=Path("predictions/latest_prediction.md").resolve()
 with open(output, "w", encoding='utf-8') as f:
     f.write(prediction_text)
 
