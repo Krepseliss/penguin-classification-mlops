@@ -39,7 +39,9 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git stash
           git pull origin main --rebase   #Important to avoid push rejection
+          git stash pop || echo "Nothing to stash"
           git add predictions/ || echo "No prediction files to add"
           git commit -m "Daily prediction update" || echo "No changes to commit"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
