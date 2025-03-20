@@ -25,6 +25,11 @@ jobs:
         run: |
           pip install pandas scikit-learn joblib requests
 
+      - name: fix rebase errors
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Run prediction script
         run: python scripts/prediction.py
 
