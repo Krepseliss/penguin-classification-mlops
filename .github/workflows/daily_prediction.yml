@@ -33,6 +33,9 @@ jobs:
       - name: Run prediction script
         run: python scripts/prediction.py
 
+      - name: Copy latest prediction to docs for GitHub Pages
+        run: cp predictions/latest_prediction.md docs/index.md
+
       - name: Commit prediction results
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -45,6 +48,3 @@ jobs:
           git add predictions/ || echo "No prediction files to add"
           git commit -m "Daily prediction update" || echo "No changes to commit"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-
-      - name: Copy latest prediction to docs for GitHub Pages
-        run: cp predictions/latest_prediction.md docs/index.md
