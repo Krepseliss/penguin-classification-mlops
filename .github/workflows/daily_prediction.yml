@@ -37,4 +37,5 @@ jobs:
           git pull origin main --rebase   #Important to avoid push rejection
           git add predictions/latest_prediction.md
           git commit -m "Daily prediction update" || echo "No changes to commit"
+          git fetch origin main
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
