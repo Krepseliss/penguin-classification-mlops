@@ -28,11 +28,6 @@ jobs:
       - name: Run prediction script
         run: python scripts/prediction.py
 
-      - name: fix rebase errors
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - name: Commit prediction results
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
