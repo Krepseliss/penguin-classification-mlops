@@ -1,5 +1,8 @@
 name: Daily Penguin Prediction
 
+permissions:
+  contents: write 
+
 on:
   schedule:
     - cron: "30 5 * * *"  # Runs daily at 7:30 AM CET
