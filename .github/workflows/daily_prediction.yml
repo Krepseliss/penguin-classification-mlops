@@ -1,0 +1,34 @@
+name: Daily Penguin Prediction
+
+on:
+  schedule:
+    - cron: "30 5 * * *"  # Runs daily at 7:30 AM CET
+  workflow_dispatch:       # Allows manual trigger
+
+jobs:
+  predict:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pandas scikit-learn joblib requests
+
+      - name: Run prediction script
+        run: python scripts/prediction.py
+
+      - name: Commit prediction results
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add predictions/latest_prediction.md
+          git commit -m "Daily prediction update"
+          git push origin main || echo "No changes to commit"
