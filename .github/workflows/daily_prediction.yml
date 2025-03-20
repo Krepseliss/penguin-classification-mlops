@@ -29,9 +29,12 @@ jobs:
         run: python scripts/prediction.py
 
       - name: Commit prediction results
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git pull origin main --rebase   #Important to avoid push rejection
           git add predictions/latest_prediction.md
-          git commit -m "Daily prediction update"
-          git push origin main || echo "No changes to commit"
+          git commit -m "Daily prediction update" || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
