@@ -34,7 +34,7 @@ prediction_text = f"""
 """
 
 #save the prediction
-output=Path("predictions/latest_pred.md").resolve()
+output=Path("predictions/latest_prediction.md").resolve()
 with open(output, "w", encoding='utf-8') as f:
     f.write(prediction_text)
 
