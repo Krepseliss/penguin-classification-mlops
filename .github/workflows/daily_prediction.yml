@@ -45,3 +45,6 @@ jobs:
           git add predictions/ || echo "No prediction files to add"
           git commit -m "Daily prediction update" || echo "No changes to commit"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+
+      - name: Copy latest prediction to docs for GitHub Pages
+        run: cp predictions/latest_prediction.md docs/index.md
