@@ -29,4 +29,4 @@ islands_df.to_sql('ISLANDS', con=engine, if_exists='replace', index=False)
 penguins[['species', 'bill_length_mm', 'bill_depth_mm', 'flipper_length_mm',
           'body_mass_g', 'sex', 'island_id', 'animal_id']].to_sql('PENGUINS', con=engine, if_exists='replace', index=False)
 
-print('Success!')
+print('\nSuccess!')
